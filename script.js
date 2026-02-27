@@ -266,24 +266,29 @@ const installBtn = document.getElementById('installPwa');
 const closePwa = document.getElementById('closePwa');
 const pwaText = document.querySelector('.pwa-text p');
 
-// Detect iOS
-const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+// Detect iOS/Safari
+const isIOS = (/iPhone|iPod|iPad/.test(navigator.platform) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1));
 const isInStandaloneMode = ('standalone' in window.navigator) && (window.navigator.standalone);
 
+// For Android/Chrome
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
     if (pwaBanner) pwaBanner.style.display = 'flex';
 });
 
-// For iOS Users: Show the banner manually since beforeinstallprompt isn't supported
-if (isIOS && !isInStandaloneMode) {
-    if (pwaBanner) {
-        pwaBanner.style.display = 'flex';
-        if (pwaText) pwaText.innerText = 'Tap "Share" then "Add to Home Screen"';
-        if (installBtn) installBtn.style.display = 'none'; // iOS doesn't support programmatic install
+// For iOS Users: Show the banner manually after page load
+window.addEventListener('load', () => {
+    if (isIOS && !isInStandaloneMode) {
+        if (pwaBanner) {
+            console.log('Detected iOS, showing manual install banner');
+            pwaBanner.style.display = 'flex';
+            if (pwaText) pwaText.innerHTML = 'Install as App: Tap <strong>Share</strong> then <strong>Add to Home Screen</strong>';
+            if (installBtn) installBtn.style.display = 'none'; // iOS doesn't support the install button
+        }
     }
-}
+});
 
 if (installBtn) {
     installBtn.addEventListener('click', async () => {
