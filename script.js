@@ -264,27 +264,33 @@ let deferredPrompt;
 const pwaBanner = document.getElementById('pwaInstallBanner');
 const installBtn = document.getElementById('installPwa');
 const closePwa = document.getElementById('closePwa');
+const pwaText = document.querySelector('.pwa-text p');
+
+// Detect iOS
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+const isInStandaloneMode = ('standalone' in window.navigator) && (window.navigator.standalone);
 
 window.addEventListener('beforeinstallprompt', (e) => {
-    // Prevent Chrome 67 and earlier from automatically showing the prompt
     e.preventDefault();
-    // Stash the event so it can be triggered later.
     deferredPrompt = e;
-    // Update UI to notify the user they can add to home screen
     if (pwaBanner) pwaBanner.style.display = 'flex';
 });
+
+// For iOS Users: Show the banner manually since beforeinstallprompt isn't supported
+if (isIOS && !isInStandaloneMode) {
+    if (pwaBanner) {
+        pwaBanner.style.display = 'flex';
+        if (pwaText) pwaText.innerText = 'Tap "Share" then "Add to Home Screen"';
+        if (installBtn) installBtn.style.display = 'none'; // iOS doesn't support programmatic install
+    }
+}
 
 if (installBtn) {
     installBtn.addEventListener('click', async () => {
         if (!deferredPrompt) return;
-        // Show the install prompt
         deferredPrompt.prompt();
-        // Wait for the user to respond to the prompt
         const { outcome } = await deferredPrompt.userChoice;
-        console.log(`User response to the install prompt: ${outcome}`);
-        // We've used the prompt, and can't use it again, throw it away
         deferredPrompt = null;
-        // Hide the banner
         if (pwaBanner) pwaBanner.style.display = 'none';
     });
 }
