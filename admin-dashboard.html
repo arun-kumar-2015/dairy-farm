@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Sri Lakshmi Dairy Farm</title>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Outfit:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Toastify CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="admin-dashboard-body">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-leaf logo-icon"></i>
+            <span>Admin Portal</span>
+            <div class="close-sidebar" id="closeSidebar"><i class="fas fa-times"></i></div>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="active" data-target="dashboard-section"><i class="fas fa-chart-line"></i> Dashboard</li>
+            <li data-target="orders-section"><i class="fas fa-shopping-basket"></i> Orders</li>
+            <li><a href="index.html" style="color: inherit; text-decoration: none;"><i class="fas fa-globe"></i> View
+                    Website</a></li>
+            <li id="logoutBtn" style="margin-top: auto; color: #f3616d;"><i class="fas fa-sign-out-alt"></i> Logout</li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Topbar -->
+        <header class="topbar">
+            <div class="menu-toggle" id="adminMenuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="user-info">
+                <span id="adminEmail">Loading...</span>
+                <div class="avatar"><i class="fas fa-user-circle"></i></div>
+            </div>
+        </header>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard-section" class="content-section active">
+            <div class="section-header">
+                <h2>Dashboard Overview</h2>
+            </div>
+            <div class="metric-cards">
+                <div class="metric-card">
+                    <div class="card-icon"><i class="fas fa-shopping-cart"></i></div>
+                    <div class="card-info">
+                        <h3>Total Orders</h3>
+                        <p id="totalOrdersCount">0</p>
+                    </div>
+                </div>
+                <div class="metric-card warning">
+                    <div class="card-icon"><i class="fas fa-clock"></i></div>
+                    <div class="card-info">
+                        <h3>Pending</h3>
+                        <p id="pendingOrdersCount">0</p>
+                    </div>
+                </div>
+                <div class="metric-card success">
+                    <div class="card-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="card-info">
+                        <h3>Delivered</h3>
+                        <p id="deliveredOrdersCount">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-recent">
+                <h3>Recent Activity</h3>
+                <div class="table-container" style="max-height: 300px;">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recentOrdersBody">
+                            <!-- Recent orders -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Orders Section -->
+        <section id="orders-section" class="content-section" style="display: none;">
+            <div class="section-header">
+                <h2>Manage Orders</h2>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search by phone or name...">
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table class="orders-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Date</th>
+                            <th>Customer</th>
+                            <th>Phone & Address</th>
+                            <th>Product Details</th>
+                            <th>Total (₹)</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTableBody">
+                        <!-- Loading spinner row -->
+                        <tr id="tableLoadingRow">
+                            <td colspan="8" style="text-align: center; padding: 40px;">
+                                <i class="fas fa-spinner fa-spin fa-2x" style="color: var(--primary);"></i>
+                                <p style="margin-top: 10px; color: var(--gray);">Loading orders from secure database...
+                                </p>
+                            </td>
+                        </tr>
+                        <!-- Orders will be dynamically injected here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="config.js"></script>
+    <script src="admin-dashboard.js"></script>
+</body>
+
+</html>

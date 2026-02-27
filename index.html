@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Lakshmi Dairy Farm | Pure & Fresh Milk Delivered</title>
+    <meta name="description"
+        content="Get pure, fresh, and organic farm milk delivered to your home from Sri Lakshmi Dairy Farm. Healthy cows, hygienic process.">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Outfit:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <span>Sri Lakshmi Dairy</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="cart-btn" id="cartToggle">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content" data-aos="fade-up">
+            <h1>Sri Lakshmi Dairy Farm</h1>
+            <p>Pure & Fresh Farm Milk Delivered to Your Home</p>
+            <div class="hero-btns">
+                <a href="#products" class="btn btn-primary">Order Milk Now</a>
+                <a href="#contact" class="btn btn-outline">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-img" data-aos="fade-right">
+                    <img src="assets/about.jpg" alt="Dairy Farm">
+                </div>
+                <div class="about-text" data-aos="fade-left">
+                    <span class="subtitle">Our Story</span>
+                    <h2>A Tradition of Purity</h2>
+                    <p>At Sri Lakshmi Dairy Farm, we believe in the goodness of nature. Our journey started with a
+                        simple mission: to provide every family with the freshest, most nutritious milk possible.</p>
+                    <div class="features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Healthy cows & balanced organic feed</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>100% Hygienic milking process</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Daily fresh supply within hours</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products section">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <span class="subtitle">Fresh From Farm</span>
+                <h2>Our Premium Products</h2>
+            </div>
+            <div class="product-grid" id="productGrid">
+                <!-- Products will be loaded via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery Info Section -->
+    <section class="delivery section bg-light">
+        <div class="container">
+            <div class="delivery-card" data-aos="zoom-in">
+                <div class="delivery-item">
+                    <i class="fas fa-truck-fast"></i>
+                    <h3>Local Delivery</h3>
+                    <p>We deliver across all nearby neighborhoods.</p>
+                </div>
+                <div class="delivery-item border-left">
+                    <i class="fas fa-clock"></i>
+                    <h3>Same-Day Delivery</h3>
+                    <p>Orders before 7 AM reach you by breakfast.</p>
+                </div>
+                <div class="delivery-item border-left">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Hygienic Handling</h3>
+                    <p>Strict safety protocols for every delivery.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery section">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <span class="subtitle">Explore Our Farm</span>
+                <h2>Life at Sri Lakshmi Dairy</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="0">
+                    <img src="assets/buffalo.jpg" alt="Real Water Buffalo">
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+                    <img src="assets/hens.jpg" alt="Hens on the Farm">
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+                    <img src="assets/storage.jpg" alt="Hygienic Storage">
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
+                    <img src="assets/farm.jpg" alt="Sri Lakshmi Farm View">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section bg-light">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info" data-aos="fade-right">
+                    <h2>Get In Touch</h2>
+                    <p>Have questions or want to start your daily subscription? Contact us today!</p>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 98765 43210</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <a href="https://wa.me/919876543210" class="wa-link">Chat on WhatsApp</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Ragudu, Sircilla, Telangana - 505301</span>
+                    </div>
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15124.770954388484!2d78.81541813444141!3d18.38338947668278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcc7978e888888b%3A0x8888888888888888!2sRagudu%2C%20Telangana%20505301!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                            width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="contact-form" data-aos="fade-left">
+                    <div class="contact-form-header">
+                        <img src="https://images.unsplash.com/photo-1529622686324-ee4494218eb0?auto=format&fit=crop&q=80&w=600"
+                            alt="Fresh Farm Products" class="form-banner-img">
+                        <p>Send us a message for daily subscription!</p>
+                    </div>
+                    <form id="mainContactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Phone Number" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Message..." rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Sri Lakshmi Dairy</h3>
+                    <p>Bringing the farm's purity to your doorstep.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#products">Products</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Social</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Sri Lakshmi Dairy Farm. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2>Your Shopping Cart</h2>
+                <i class="fas fa-times" id="closeCart"></i>
+            </div>
+            <div id="cartItems" class="cart-items">
+                <!-- Cart items load here -->
+            </div>
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotalValue">₹0.00</span>
+            </div>
+            <div class="checkout-form" id="checkoutForm">
+                <h3>Delivery Details</h3>
+                <form id="orderForm">
+                    <input type="text" name="name" placeholder="Full Name" required>
+                    <input type="tel" name="phone" placeholder="Phone Number" required>
+                    <textarea name="address" placeholder="Delivery Address" required></textarea>
+                    <input type="date" name="date" required id="deliveryDate">
+                    <div class="payment-options">
+                        <label><input type="radio" name="payment" value="cod" checked> Cash on Delivery</label>
+                        <label><input type="radio" name="payment" value="upi"> UPI Payment</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Confirm Order</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div id="successOverlay" class="success-overlay">
+        <div class="success-card">
+            <i class="fas fa-check-circle"></i>
+            <h2>Order Confirmed!</h2>
+            <p style="margin-bottom: 15px;">Your Order ID: <strong id="generatedOrderId"
+                    style="color: var(--primary);">N/A</strong></p>
+            <p>Thank you for choosing Sri Lakshmi Dairy. We will contact you shortly.</p>
+            <button class="btn btn-primary" onclick="closeSuccess()">OK</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            once: true
+        });
+    </script>
+</body>
+
+</html>
