@@ -250,3 +250,47 @@ menuToggle.addEventListener('click', () => {
 // Initialize
 initProducts();
 updateCart();
+// Register Service Worker
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+            .then(reg => console.log('Service Worker registered!'))
+            .catch(err => console.log('Service Worker registration failed', err));
+    });
+}
+
+// PWA Install Logic
+let deferredPrompt;
+const pwaBanner = document.getElementById('pwaInstallBanner');
+const installBtn = document.getElementById('installPwa');
+const closePwa = document.getElementById('closePwa');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent Chrome 67 and earlier from automatically showing the prompt
+    e.preventDefault();
+    // Stash the event so it can be triggered later.
+    deferredPrompt = e;
+    // Update UI to notify the user they can add to home screen
+    if (pwaBanner) pwaBanner.style.display = 'flex';
+});
+
+if (installBtn) {
+    installBtn.addEventListener('click', async () => {
+        if (!deferredPrompt) return;
+        // Show the install prompt
+        deferredPrompt.prompt();
+        // Wait for the user to respond to the prompt
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`User response to the install prompt: ${outcome}`);
+        // We've used the prompt, and can't use it again, throw it away
+        deferredPrompt = null;
+        // Hide the banner
+        if (pwaBanner) pwaBanner.style.display = 'none';
+    });
+}
+
+if (closePwa) {
+    closePwa.addEventListener('click', () => {
+        if (pwaBanner) pwaBanner.style.display = 'none';
+    });
+}
