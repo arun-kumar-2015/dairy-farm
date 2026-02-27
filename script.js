@@ -266,42 +266,50 @@ const installBtn = document.getElementById('installPwa');
 const closePwa = document.getElementById('closePwa');
 const pwaText = document.querySelector('.pwa-text p');
 
-// Detect iOS/Safari
-const isIOS = (/iPhone|iPod|iPad/.test(navigator.platform) ||
-    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1));
+// Helper to check if mobile
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 const isInStandaloneMode = ('standalone' in window.navigator) && (window.navigator.standalone);
 
-// For Android/Chrome
+// Show banner proactively on mobile after delay
+window.addEventListener('load', () => {
+    if (isMobile && !isInStandaloneMode && !localStorage.getItem('pwaDismissed')) {
+        setTimeout(() => {
+            if (pwaBanner) {
+                pwaBanner.style.display = 'flex';
+                // Customize text for iOS users
+                if (isIOS) {
+                    if (pwaText) pwaText.innerHTML = 'Install as App: Tap <strong>Share</strong> then <strong>Add to Home Screen</strong>';
+                    if (installBtn) installBtn.style.display = 'none';
+                }
+            }
+        }, 3000); // 3-second delay so user can see the hero first
+    }
+});
+
+// Capture Chrome's install prompt
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    if (pwaBanner) pwaBanner.style.display = 'flex';
-});
-
-// For iOS Users: Show the banner manually after page load
-window.addEventListener('load', () => {
-    if (isIOS && !isInStandaloneMode) {
-        if (pwaBanner) {
-            console.log('Detected iOS, showing manual install banner');
-            pwaBanner.style.display = 'flex';
-            if (pwaText) pwaText.innerHTML = 'Install as App: Tap <strong>Share</strong> then <strong>Add to Home Screen</strong>';
-            if (installBtn) installBtn.style.display = 'none'; // iOS doesn't support the install button
-        }
-    }
+    // Banner is already handled by the load event proactively, 
+    // but we stash the prompt event for the Install button.
 });
 
 if (installBtn) {
     installBtn.addEventListener('click', async () => {
-        if (!deferredPrompt) return;
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        deferredPrompt = null;
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            deferredPrompt = null;
+        }
         if (pwaBanner) pwaBanner.style.display = 'none';
+        localStorage.setItem('pwaDismissed', 'true');
     });
 }
 
 if (closePwa) {
     closePwa.addEventListener('click', () => {
         if (pwaBanner) pwaBanner.style.display = 'none';
+        localStorage.setItem('pwaDismissed', 'true'); // Don't show again once closed
     });
 }
