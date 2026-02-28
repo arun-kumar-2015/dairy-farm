@@ -30,7 +30,7 @@ const products = [
         desc: "Natural, thick set curd made daily.",
         price: 40,
         unit: "500g",
-        image: "assets/curd_new.jpg"
+        image: ""
     },
     {
         id: 5,
