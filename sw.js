@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lakshmi-dairy-v1';
+const CACHE_NAME = 'lakshmi-dairy-v2';
 const ASSETS_TO_CACHE = [
     '/',
     '/index.html',
@@ -10,7 +10,10 @@ const ASSETS_TO_CACHE = [
     '/assets/icon-512.png',
     '/assets/farm.jpg',
     '/assets/milk.jpg',
-    '/assets/buffalo.jpg'
+    '/assets/buffalo.jpg',
+    '/assets/buffalo_milk_v3.jpg',
+    '/assets/curd_final.jpg',
+    '/assets/paneer.jpg'
 ];
 
 // Install Event
