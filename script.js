@@ -14,7 +14,7 @@ const products = [
         desc: "Thick and creamy buffalo milk for better health.",
         price: 85,
         unit: "L",
-        image: "assets/buffalo_milk.jpg"
+        image: "assets/buffalo_milk.webp"
     },
     {
         id: 3,
