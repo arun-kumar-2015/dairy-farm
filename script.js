@@ -14,7 +14,7 @@ const products = [
         desc: "Thick and creamy buffalo milk for better health.",
         price: 85,
         unit: "L",
-        image: "assets/buffalo_milk.webp"
+        image: "assets/buffalo_milk.jpg"
     },
     {
         id: 3,
@@ -30,7 +30,7 @@ const products = [
         desc: "Natural, thick set curd made daily.",
         price: 40,
         unit: "500g",
-        image: "assets/curd.jpg"
+        image: "assets/curd_new.jpg"
     },
     {
         id: 5,
