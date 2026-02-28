@@ -69,11 +69,7 @@ function initProducts() {
                 <p class="product-price">₹${product.price} / ${product.unit}</p>
                 <div class="product-controls">
                     <select class="qty-select" id="qty-${product.id}">
-                        <option value="1">1 Unit</option>
-                        <option value="2">2 Units</option>
-                        <option value="3">3 Units</option>
-                        <option value="4">4 Units</option>
-                        <option value="5">5 Units</option>
+                        ${[...Array(10).keys()].map(i => `<option value="${i + 1}">${i + 1} Unit${i > 0 ? 's' : ''}</option>`).join('')}
                     </select>
                     <button class="btn btn-primary" onclick="addToCart(${product.id})">Add to Cart</button>
                 </div>
