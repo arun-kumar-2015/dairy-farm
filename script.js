@@ -243,6 +243,24 @@ menuToggle.addEventListener('click', () => {
     }
 });
 
+// Mobile Menu Auto-close
+const navLinkElements = document.querySelectorAll('.nav-links a');
+const navMenu = document.querySelector('.nav-links');
+
+navLinkElements.forEach(link => {
+    link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+            navMenu.classList.remove('active');
+            navMenu.style.display = 'none';
+            // If using a font-awesome icon toggle
+            const menuIcon = document.querySelector('.menu-toggle i');
+            if (menuIcon) {
+                menuIcon.classList.replace('fa-times', 'fa-bars');
+            }
+        }
+    });
+});
+
 // Initialize
 initProducts();
 updateCart();

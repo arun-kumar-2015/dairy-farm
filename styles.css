@@ -1125,3 +1125,29 @@ h3 {
         opacity: 1;
     }
 }
+
+/* Mobile Optimizations */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2.5rem !important;
+    }
+
+    .hero p {
+        font-size: 1.1rem !important;
+    }
+
+    .section-title h2 {
+        font-size: 2rem !important;
+    }
+}
+
+/* Tactile Feedback for Mobile */
+.btn:active,
+.product-card:active,
+.gallery-item:active {
+    transform: scale(0.98);
+}
+
+.install-banner {
+    background: linear-gradient(135deg, var(--primary), #1a4d1a) !important;
+}
