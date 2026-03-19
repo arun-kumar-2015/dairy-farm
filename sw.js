@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lakshmi-dairy-v2';
+const CACHE_NAME = 'lakshmi-dairy-v4';
 const ASSETS_TO_CACHE = [
     '/',
     '/index.html',
@@ -28,6 +28,16 @@ self.addEventListener('install', event => {
 
 // Fetch Event
 self.addEventListener('fetch', event => {
+    // Only cache GET requests. Ignore POST/PUT/DELETE completely to prevent API fetch locks.
+    if (event.request.method !== 'GET') {
+        return;
+    }
+    
+    // Bypass Supabase API calls completely to prevent cache-related AbortErrors
+    if (event.request.url.includes('supabase.co')) {
+        return;
+    }
+
     event.respondWith(
         caches.match(event.request).then(response => {
             // Cache hit - return response
